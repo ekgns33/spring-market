@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-market
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
