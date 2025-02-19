@@ -16,7 +16,7 @@ class UserTest{
     )
     fun 회원가입_입력값_검증(name: String, password: String) {
         assertFails {
-            val user = User(name, password)
+            val user = User.withoutId(name, password)
         }
     }
 }
