@@ -19,8 +19,8 @@ class UserController(
 ) {
     @PostMapping
     fun signUp(@RequestBody signUpRequest: SignupRequest): ResponseEntity<SuccessResponse<SignUpResponse>> {
-        println(signUpRequest.name +  signUpRequest.password);
-        val signUpResponse = userDomainService.signup(UserSignupCommand(signUpRequest.name, signUpRequest.password));
+        println(signUpRequest.name +  signUpRequest.password)
+        val signUpResponse = userDomainService.signup(UserSignupCommand(signUpRequest.name, signUpRequest.password))
         return ResponseEntity.status(201).body(success(signUpResponse, "success"))
     }
 }

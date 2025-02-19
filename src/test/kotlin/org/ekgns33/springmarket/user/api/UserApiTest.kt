@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.ekgns33.springmarket.user.adapter.`in`.model.SignUpResponse
 import org.ekgns33.springmarket.user.adapter.`in`.model.SignupRequest
 import org.ekgns33.springmarket.user.service.port.`in`.UserService
-import org.ekgns33.springmarket.user.service.port.`in`.model.UserSignupCommand
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.given
@@ -25,7 +24,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 @DisplayName("회원 API 테스트")
 class UserApiTest {
     @MockitoBean
-    lateinit var userService: UserService;
+    lateinit var userService: UserService
     @Autowired
     lateinit var mockMvc: MockMvc
     @Autowired

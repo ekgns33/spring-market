@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component
 private class UserPersistenceAdapter (val userRepository: UserRepository): UserCreatePort {
     override fun save(userData: User): UserData {
         val userEntity = UserEntity(userData)
-        userRepository.save(userEntity);
-        return mapToUserData(userEntity);
+        userRepository.save(userEntity)
+        return mapToUserData(userEntity)
     }
 
     private fun mapToUserData(userEntity: UserEntity): UserData {
