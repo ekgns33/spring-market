@@ -13,7 +13,7 @@ class UserDomainService (private val userCreatePort: UserCreatePort) : UserServi
 
     @Transactional
     override fun signup(userSignupCommand: UserSignupCommand): SignUpResponse {
-        val user = User(userSignupCommand.name, userSignupCommand.password)
+        val user = User.withoutId(userSignupCommand.name, userSignupCommand.password)
         val savedUserData = userCreatePort.save(user)
         return SignUpResponse(savedUserData.name, savedUserData.password)
     }
