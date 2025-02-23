@@ -1,21 +1,24 @@
 package org.ekgns33.springmarket.configs
 
+import org.ekgns33.springmarket.auth.filter.JwtAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.util.PathMatcher
 
 
 @Configuration
 @EnableWebSecurity
-class SpringSecurityConfig (
-){
+class SpringSecurityConfig(
+    val jwtAuthenticationFilter: JwtAuthenticationFilter
+) {
 
     @Bean
     fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration): AuthenticationManager {
@@ -40,7 +43,7 @@ class SpringSecurityConfig (
                 authorize("/users", permitAll)
                 authorize(anyRequest, authenticated)
             }
-
+            addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
         }
         return http.build()
     }

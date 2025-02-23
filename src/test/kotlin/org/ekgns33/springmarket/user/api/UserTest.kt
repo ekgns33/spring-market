@@ -11,12 +11,12 @@ class UserTest{
 
     @ParameterizedTest()
     @CsvSource(
-        "사용자1, ''",
-        "'', 비밀번호2"
+        "email, 사용자1, ''",
+        "test@example.com, '', 비밀번호2"
     )
-    fun 회원가입_입력값_검증(name: String, password: String) {
+    fun 회원가입_입력값_검증(email: String, name: String, password: String) {
         assertFails {
-            val user = User.withoutId(name, password)
+            val user = User.withoutId(email, name, password)
         }
     }
 }
