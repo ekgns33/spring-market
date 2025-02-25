@@ -1,9 +1,9 @@
-package org.ekgns33.springmarket.product.adapter.`in`
+package org.ekgns33.springmarket.product.adapter.`in`.model
 
 import org.ekgns33.springmarket.product.domain.Product
 
-
-data class ProductView(
+// TODO: 거래 내역 추가
+data class ProductDetailViewResponse(
     val id: Long?,
     val name: String,
     val price: Int,
@@ -15,6 +15,6 @@ data class ProductView(
         name = product.name,
         price = product.price.value,
         amount = product.amount,
-        status = product.status.name,
+        status = product.status.name
     )
 }
