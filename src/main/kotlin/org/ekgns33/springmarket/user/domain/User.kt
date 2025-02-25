@@ -3,7 +3,7 @@ package org.ekgns33.springmarket.user.domain
 import org.ekgns33.springmarket.common.CustomValidation
 
 class User(
-    val userId: Long?,
+    val id: Long?,
     val email: String,
     val name: String,
     val password: String,

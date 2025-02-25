@@ -32,13 +32,13 @@ class UserDomainService(
     override fun authenticate(email: String, password: String): UserAuthInfo {
         val user = userLoadPort.findByEmail(email)
         checkPassword(password, user.password)
-        return UserAuthInfo(user.userId, user.password, listOf(user.role))
+        return UserAuthInfo(user.id, user.password, listOf(user.role))
     }
 
     @Transactional(readOnly = true)
     override fun getUserAuthorities(username: String): UserAuthInfo {
         val user = userLoadPort.findByName(username)
-        return UserAuthInfo(user.userId, user.password, listOf(user.role))
+        return UserAuthInfo(user.id, user.password, listOf(user.role))
     }
 
     @Throws(AuthenticationException::class)

@@ -5,7 +5,6 @@ import org.ekgns33.springmarket.product.adapter.out.ProductRepository
 import org.ekgns33.springmarket.product.domain.Product
 import org.ekgns33.springmarket.product.domain.ProductEntity
 import org.ekgns33.springmarket.product.domain.ProductStatus
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.data.domain.PageRequest
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 @DataJpaTest
 class ProductJpaTest {
@@ -40,6 +40,9 @@ class ProductJpaTest {
         assertEquals("상품명1", foundProduct.name)
         assertEquals(1000, foundProduct.price)
         assertEquals(10, foundProduct.amount)
+        assertNotNull(foundProduct.createdAt)
+        assertNotNull(foundProduct.updatedAt)
+        assertNull(foundProduct.deletedAt)
         assertEquals(ProductStatus.ON_SALE, foundProduct.status)
     }
 

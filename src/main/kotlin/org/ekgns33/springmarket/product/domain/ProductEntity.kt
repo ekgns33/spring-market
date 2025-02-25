@@ -1,6 +1,8 @@
 package org.ekgns33.springmarket.product.domain
 
 import jakarta.persistence.*
+import org.ekgns33.springmarket.common.BaseEntity
+import java.util.*
 
 @Entity
 @Table(name = "products")
@@ -18,10 +20,31 @@ class ProductEntity(
     @Column(name = "name")
     var name: String,
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?
-) {
+    ) : BaseEntity() {
 
+    constructor(product: Product) : this(
+        status = product.status,
+        amount = product.amount,
+        price = product.price.value,
+        name = product.name
+    ) {
+        this.id = product.id
+    }
 
-    constructor(product: Product) : this(product.status, product.amount, product.price.value, product.name, product.id)
+    override fun toString(): String {
+        return "Product(id=$id, name='$name')"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ProductEntity) return false
+        if (other.javaClass != this.javaClass) return false
+        if (id == null || other.id == null) return false
+        return id == other.id
+    }
+
+    override fun hashCode(): Int {
+        if(id == null) return Objects.hash(name, price, status)
+        return id.hashCode()
+    }
 }
