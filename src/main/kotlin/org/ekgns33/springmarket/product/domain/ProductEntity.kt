@@ -9,17 +9,17 @@ class ProductEntity(
     @Enumerated(EnumType.STRING)
     var status: ProductStatus,
 
-    @Column(name= "amount")
+    @Column(name = "amount")
     var amount: Int,
 
-    @Column(name= "price")
+    @Column(name = "price")
     var price: Int,
 
     @Column(name = "name")
     var name: String,
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id : Long?
+    val id: Long?
 ) {
 
 
