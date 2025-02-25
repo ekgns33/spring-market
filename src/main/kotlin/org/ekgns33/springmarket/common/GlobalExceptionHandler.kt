@@ -20,11 +20,19 @@ class GlobalExceptionHandler {
         )
     }
 
+    @ExceptionHandler(BusinessServiceException::class)
+    fun handleBusinessServiceException(e: BusinessServiceException): ResponseEntity<ErrorResponse> {
+        logger().info("[ERR] Business Service Error : {} ", e.errorCode.description, e)
+        return ResponseEntity.status(e.errorCode.responseCode).body(
+            BaseResponse.error(e.errorCode.description, e.errorCode)
+        )
+    }
+
     @ExceptionHandler(Exception::class)
     fun handleException(e: Exception): ResponseEntity<ErrorResponse> {
         logger().error("[ERR] INTERNAL ERROR: ${e.message}", e)
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-            BaseResponse.error(ErrorCode.SERVER_ERROR.name, ErrorCode.SERVER_ERROR)
+            BaseResponse.error(GlobalErrorCode.SERVER_ERROR.name, GlobalErrorCode.SERVER_ERROR)
         )
     }
 }
