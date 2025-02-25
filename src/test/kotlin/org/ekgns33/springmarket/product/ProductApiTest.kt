@@ -6,7 +6,10 @@ import org.ekgns33.springmarket.product.adapter.`in`.model.ProductRegisterRespon
 import org.ekgns33.springmarket.product.service.port.`in`.ProductRegisterUsecase
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.*
+import org.mockito.kotlin.any
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
