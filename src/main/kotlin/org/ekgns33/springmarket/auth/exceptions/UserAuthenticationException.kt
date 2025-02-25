@@ -1,7 +1,7 @@
 package org.ekgns33.springmarket.auth.exceptions
 
-import org.ekgns33.springmarket.common.ErrorCode
+import org.ekgns33.springmarket.common.GlobalErrorCode
 
 class UserAuthenticationException(
-    val errorCode: ErrorCode,
+    val errorCode: GlobalErrorCode,
 ) : RuntimeException()

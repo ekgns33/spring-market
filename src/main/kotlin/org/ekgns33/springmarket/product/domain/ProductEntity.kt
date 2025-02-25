@@ -44,7 +44,7 @@ class ProductEntity(
     }
 
     override fun hashCode(): Int {
-        if(id == null) return Objects.hash(name, price, status)
+        if (id == null) return Objects.hash(name, price, status)
         return id.hashCode()
     }
 }

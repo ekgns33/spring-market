@@ -3,6 +3,8 @@ package org.ekgns33.springmarket.product.adapter.out
 import org.ekgns33.springmarket.common.Money
 import org.ekgns33.springmarket.product.domain.Product
 import org.ekgns33.springmarket.product.domain.ProductEntity
+import org.ekgns33.springmarket.product.exceptions.ProductErrorCode
+import org.ekgns33.springmarket.product.exceptions.ProductNotFoundException
 import org.ekgns33.springmarket.product.service.port.out.ProductLoadPort
 import org.ekgns33.springmarket.product.service.port.out.ProductSavePort
 import org.springframework.data.domain.PageRequest
@@ -24,6 +26,12 @@ class ProductPersistenceAdapter(
             .map { mapToProduct(it) }
             .toList()
         return productEntities
+    }
+
+    override fun loadProduct(id: Long): Product {
+        val productEntity = productRepository.findById(id)
+            .orElseThrow { ProductNotFoundException(ProductErrorCode.PRODUCT_NOT_FOUND) }
+        return mapToProduct(productEntity)
     }
 
     private fun mapToProduct(entity: ProductEntity): Product {

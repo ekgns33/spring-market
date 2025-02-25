@@ -9,7 +9,7 @@ import java.util.*
 import javax.crypto.spec.SecretKeySpec
 
 import org.ekgns33.springmarket.auth.exceptions.UserAuthenticationException
-import org.ekgns33.springmarket.common.ErrorCode
+import org.ekgns33.springmarket.common.GlobalErrorCode
 
 @DisplayName("JWT Validator 검증")
 class JwtValidatorTest {
@@ -43,7 +43,7 @@ class JwtValidatorTest {
   val exception = assertThrows(UserAuthenticationException::class.java) {
    jwtValidator.validate(invalidToken)
   }
-  assertEquals(ErrorCode.JWT_BROKEN, exception.errorCode)
+  assertEquals(GlobalErrorCode.JWT_BROKEN, exception.errorCode)
  }
 
 }

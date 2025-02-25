@@ -32,6 +32,15 @@ class ProductQueryServiceTest {
             )
         }
 
+        override fun loadProduct(id: Long): Product {
+            return Product(
+                id = 2L,
+                name = "상품 2",
+                price = Money(5000),
+                amount = 0,
+                status = ProductStatus.OUT_OF_STOCK
+            )
+        }
     }
 
     private val port: ProductLoadPort = StubProductLoadPort()
