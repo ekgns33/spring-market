@@ -1,6 +1,7 @@
 package org.ekgns33.springmarket.product.domain
 
 import jakarta.persistence.*
+import org.ekgns33.springmarket.common.BaseEntity
 
 @Entity
 @Table(name = "products")
@@ -18,10 +19,14 @@ class ProductEntity(
     @Column(name = "name")
     var name: String,
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?
-) {
+    ) : BaseEntity() {
 
-
-    constructor(product: Product) : this(product.status, product.amount, product.price.value, product.name, product.id)
+    constructor(product: Product) : this(
+        status = product.status,
+        amount = product.amount,
+        price = product.price.value,
+        name = product.name
+    ) {
+        this.id = product.id
+    }
 }
