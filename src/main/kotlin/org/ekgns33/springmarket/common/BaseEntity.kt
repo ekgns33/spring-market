@@ -4,11 +4,12 @@ import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import java.io.Serializable
 import java.time.LocalDateTime
 
 @MappedSuperclass
 @EntityListeners(value = [AuditingEntityListener::class])
-abstract class BaseEntity {
+abstract class BaseEntity : Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +17,16 @@ abstract class BaseEntity {
 
     @CreatedDate
     @Column(name = "created_at")
-    open var createdAt: LocalDateTime? = null
+    var createdAt: LocalDateTime? = null
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    open var updatedAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null
 
-    open var deletedAt: LocalDateTime? = null
+    @Column(name = "deleted_at", nullable = true)
+    var deletedAt: LocalDateTime? = null
+
+    companion object {
+        const val serialVersionUID: Long = 1L
+    }
 }
