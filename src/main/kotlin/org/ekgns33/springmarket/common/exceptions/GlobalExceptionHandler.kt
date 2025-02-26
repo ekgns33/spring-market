@@ -1,8 +1,10 @@
-package org.ekgns33.springmarket.common
+package org.ekgns33.springmarket.common.exceptions
 
 import lombok.extern.slf4j.Slf4j
 import org.ekgns33.springmarket.auth.exceptions.UserAuthenticationException
+import org.ekgns33.springmarket.common.BaseResponse
 import org.ekgns33.springmarket.common.BaseResponse.ErrorResponse
+import org.ekgns33.springmarket.common.logger
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler

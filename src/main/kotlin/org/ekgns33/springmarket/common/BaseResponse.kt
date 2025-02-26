@@ -1,5 +1,7 @@
 package org.ekgns33.springmarket.common
 
+import org.ekgns33.springmarket.common.exceptions.ErrorCode
+
 sealed class BaseResponse(
     open val status: Boolean,
     open val message: String,

@@ -1,8 +1,8 @@
 package org.ekgns33.springmarket.user.adapter.out
 
-import jakarta.persistence.EntityNotFoundException
 import org.ekgns33.springmarket.user.domain.User
 import org.ekgns33.springmarket.user.domain.UserEntity
+import org.ekgns33.springmarket.user.exceptions.UserErrorCode
 import org.ekgns33.springmarket.user.persistence.UserRepository
 import org.ekgns33.springmarket.user.service.port.out.UserCreatePort
 import org.ekgns33.springmarket.user.service.port.out.UserLoadPort
@@ -17,12 +17,20 @@ private class UserPersistenceAdapter(val userRepository: UserRepository) : UserC
     }
 
     override fun findByEmail(email: String): User {
-        val userEntity = userRepository.findByEmail(email).getOrNull(0) ?: throw UserNotFoundException()
+        val userEntity = userRepository.findByEmail(email)
+            .getOrNull(0) ?: throw UserNotFoundException(UserErrorCode.USER_NOT_FOUND)
+        return mapToUser(userEntity)
+    }
+
+    override fun findById(id: Long): User {
+        val userEntity = userRepository.findById(id)
+            .orElseThrow { UserNotFoundException(UserErrorCode.USER_NOT_FOUND) }
         return mapToUser(userEntity)
     }
 
     override fun findByName(name: String): User {
-        val userEntity = userRepository.findByName(name).getOrNull(0) ?: throw UserNotFoundException()
+        val userEntity = userRepository.findByName(name)
+            .getOrNull(0) ?: throw UserNotFoundException(UserErrorCode.USER_NOT_FOUND)
         return mapToUser(userEntity)
     }
 

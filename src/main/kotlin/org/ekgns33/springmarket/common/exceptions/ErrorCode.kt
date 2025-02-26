@@ -1,4 +1,4 @@
-package org.ekgns33.springmarket.common
+package org.ekgns33.springmarket.common.exceptions
 
 import org.springframework.http.HttpStatusCode
 
