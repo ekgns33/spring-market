@@ -9,7 +9,7 @@ data class ProductDetailViewResponse(
     val sellerName: String,
     val name: String,
     val price: Int,
-    val amount: Int,
+    val quantity: Int,
     val status: String,
 ) {
     constructor(product: Product) : this(
@@ -18,7 +18,7 @@ data class ProductDetailViewResponse(
         sellerName = product.seller.name,
         name = product.name,
         price = product.price.value,
-        amount = product.amount,
+        quantity = product.quantity,
         status = product.status.name
     )
 }

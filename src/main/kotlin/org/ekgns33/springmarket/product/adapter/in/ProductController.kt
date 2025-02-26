@@ -51,7 +51,7 @@ class ProductController(
         return ProductRegisterCommand(
             sellerId = userId,
             name = registerRequest.name,
-            amount = registerRequest.amount,
+            quantity = registerRequest.quantity,
             price = Money(registerRequest.price)
         )
     }

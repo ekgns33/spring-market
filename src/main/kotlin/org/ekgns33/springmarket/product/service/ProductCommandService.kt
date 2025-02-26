@@ -29,7 +29,7 @@ class ProductCommandService(
             seller = seller,
             name = command.name,
             price = command.price,
-            amount = command.amount,
+            quantity = command.quantity,
             status = ProductStatus.ON_SALE
         )
     }

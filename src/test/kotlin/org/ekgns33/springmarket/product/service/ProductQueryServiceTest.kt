@@ -22,7 +22,7 @@ class ProductQueryServiceTest {
                 seller = Seller(1L, "판매자1"),
                 name = "상품 2",
                 price = Money(5000),
-                amount = 0,
+                quantity = 0,
                 status = ProductStatus.OUT_OF_STOCK
             )
         }
@@ -35,14 +35,14 @@ class ProductQueryServiceTest {
                     id = 1L,
                     name = "상품 1",
                     price = 100000,
-                    amount = 100,
+                    quantity = 100,
                     status = ProductStatus.ON_SALE
                 ),
                 ProductView(
                     id = 2L,
                     name = "상품 2",
                     price = 5000,
-                    amount = 0,
+                    quantity = 0,
                     status = ProductStatus.OUT_OF_STOCK
                 )
             )
@@ -64,7 +64,7 @@ class ProductQueryServiceTest {
 
         assertEquals(2, response.products.size)
         assertEquals(100000, response.products[0].price)
-        assertEquals(100, response.products[0].amount)
+        assertEquals(100, response.products[0].quantity)
         assertEquals("OUT_OF_STOCK", response.products[1].status)
     }
 }

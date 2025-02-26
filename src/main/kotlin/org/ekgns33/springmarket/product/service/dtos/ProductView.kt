@@ -7,9 +7,9 @@ data class ProductView(
     val id: Long?,
     val name: String,
     val price: Int,
-    val amount: Int,
+    val quantity: Int,
     val status: String,
 ) {
-    constructor(id: Long?, name: String, price: Int, amount: Int, status: ProductStatus) :
-            this(id, name, price, amount, status.name)
+    constructor(id: Long?, name: String, price: Int, quantity: Int, status: ProductStatus) :
+            this(id, name, price, quantity, status.name)
 }

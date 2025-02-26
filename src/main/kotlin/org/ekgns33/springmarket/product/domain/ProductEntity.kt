@@ -15,7 +15,7 @@ class ProductEntity(
     var status: ProductStatus,
 
     @Column(name = "amount")
-    var amount: Int,
+    var quantity: Int,
 
     @Column(name = "price")
     var price: Int,
@@ -28,7 +28,7 @@ class ProductEntity(
     constructor(product: Product) : this(
         sellerId = product.seller.id,
         status = product.status,
-        amount = product.amount,
+        quantity = product.quantity,
         price = product.price.value,
         name = product.name
     ) {

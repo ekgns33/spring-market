@@ -40,7 +40,7 @@ class ProductJpaTest {
         assertNotNull(foundProduct)
         assertEquals("상품명1", foundProduct.name)
         assertEquals(1000, foundProduct.price)
-        assertEquals(10, foundProduct.amount)
+        assertEquals(10, foundProduct.quantity)
         assertNotNull(foundProduct.createdAt)
         assertNotNull(foundProduct.updatedAt)
         assertNull(foundProduct.deletedAt)
@@ -57,7 +57,7 @@ class ProductJpaTest {
                 name = "제품명 $i",
                 seller = Seller(1L, "판매자1"),
                 price = Money(1000 + i),
-                amount = i,
+                quantity = i,
                 status = ProductStatus.ON_SALE
             )
             productList.add(ProductEntity(product))

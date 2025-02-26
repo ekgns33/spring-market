@@ -5,6 +5,6 @@ import org.ekgns33.springmarket.common.Money
 data class ProductRegisterCommand(
     val sellerId: Long,
     val name: String,
-    val amount: Int,
+    val quantity: Int,
     val price: Money
 )

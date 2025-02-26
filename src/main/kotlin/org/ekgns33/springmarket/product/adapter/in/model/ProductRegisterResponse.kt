@@ -8,7 +8,7 @@ data class ProductRegisterResponse(
     val sellerName: String,
     val name: String,
     val price: Int,
-    val amount: Int,
+    val quantity: Int,
 ) {
     constructor(product: Product) : this(
         product.id,
@@ -16,6 +16,6 @@ data class ProductRegisterResponse(
         product.seller.name,
         product.name,
         product.price.value,
-        product.amount
+        product.quantity
     )
 }

@@ -15,12 +15,8 @@ import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.Import
 import org.springframework.http.MediaType
-import org.springframework.security.access.SecurityConfig
 import org.springframework.security.test.context.support.WithMockUser
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -48,7 +44,7 @@ class ProductApiTest {
     fun 상품_등록_성공() {
         val productRegisterRequest = ProductRegisterRequest(
             name = "상품명1",
-            amount = 30,
+            quantity = 30,
             price = 1000
         )
 
@@ -57,7 +53,7 @@ class ProductApiTest {
             sellerId = 1L,
             sellerName = "판매자1",
             name = "상품명1",
-            amount = 30,
+            quantity = 30,
             price = 1000
         )
         whenever(productRegisterUsecase.register(any())).thenReturn(expectedResponse)
@@ -88,7 +84,7 @@ class ProductApiTest {
             sellerId = 1L,
             sellerName = "판매자1",
             name = "상품명1",
-            amount = 30,
+            quantity = 30,
             price = 1000,
             status = "ON_SALE"
         )

@@ -43,7 +43,7 @@ class ProductPersistenceAdapter(
             seller = seller,
             name = entity.name,
             price = Money(entity.price),
-            amount = entity.amount,
+            quantity = entity.quantity,
             status = entity.status,
         )
     }
