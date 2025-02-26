@@ -7,6 +7,9 @@ import java.util.*
 @Entity
 @Table(name = "products")
 class ProductEntity(
+    @Column(name = "seller_id")
+    var sellerId: Long,
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     var status: ProductStatus,
@@ -23,6 +26,7 @@ class ProductEntity(
     ) : BaseEntity() {
 
     constructor(product: Product) : this(
+        sellerId = product.seller.id,
         status = product.status,
         amount = product.amount,
         price = product.price.value,

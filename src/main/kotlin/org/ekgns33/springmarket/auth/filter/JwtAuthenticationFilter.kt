@@ -29,7 +29,7 @@ class JwtAuthenticationFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        if (request.getHeader((AUTH_TOKEN_HEADER)).isNullOrEmpty()) {
+        if (request.getHeader((AUTH_TOKEN_HEADER)).isNullOrEmpty() || SecurityContextHolder.getContext().authentication != null) {
             filterChain.doFilter(request, response)
             return
         }

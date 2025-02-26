@@ -5,4 +5,5 @@ import org.ekgns33.springmarket.user.domain.User
 interface UserLoadPort {
     fun findByName(name: String): User
     fun findByEmail(email: String): User
+    fun findById(id: Long): User
 }

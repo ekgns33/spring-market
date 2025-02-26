@@ -9,7 +9,7 @@ import java.util.*
 import javax.crypto.spec.SecretKeySpec
 
 import org.ekgns33.springmarket.auth.exceptions.UserAuthenticationException
-import org.ekgns33.springmarket.common.GlobalErrorCode
+import org.ekgns33.springmarket.common.exceptions.GlobalErrorCode
 
 @DisplayName("JWT Validator 검증")
 class JwtValidatorTest {

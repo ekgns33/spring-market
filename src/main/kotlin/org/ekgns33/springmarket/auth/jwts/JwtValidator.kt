@@ -2,7 +2,7 @@ package org.ekgns33.springmarket.auth.jwts
 
 import io.jsonwebtoken.Jwts
 import org.ekgns33.springmarket.auth.exceptions.UserAuthenticationException
-import org.ekgns33.springmarket.common.GlobalErrorCode
+import org.ekgns33.springmarket.common.exceptions.GlobalErrorCode
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.util.*

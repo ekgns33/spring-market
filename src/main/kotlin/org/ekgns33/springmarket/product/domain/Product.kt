@@ -4,14 +4,15 @@ import org.ekgns33.springmarket.common.Money
 
 class Product(
     val id: Long?,
+    val seller: Seller,
     val name: String,
     val price: Money,
     val amount: Int,
     val status: ProductStatus = ProductStatus.ON_SALE,
 ) {
     companion object {
-        fun withoutId(name: String, price: Money, amount: Int, status: ProductStatus): Product {
-            return Product(null, name, price, amount, status)
+        fun withoutId(seller: Seller, name: String, price: Money, amount: Int, status: ProductStatus): Product {
+            return Product(null, seller, name, price, amount, status)
         }
     }
 
