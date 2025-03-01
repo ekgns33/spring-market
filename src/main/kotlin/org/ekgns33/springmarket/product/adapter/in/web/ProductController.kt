@@ -1,13 +1,13 @@
-package org.ekgns33.springmarket.product.adapter.`in`
+package org.ekgns33.springmarket.product.adapter.`in`.web
 
 import org.ekgns33.springmarket.common.BaseResponse.Companion.success
 import org.ekgns33.springmarket.common.BaseResponse.SuccessResponse
 import org.ekgns33.springmarket.common.Money
 import org.ekgns33.springmarket.common.annotations.UserId
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductDetailViewResponse
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductListViewResponse
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductRegisterRequest
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductRegisterResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductDetailViewResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductListViewResponse
+import org.ekgns33.springmarket.product.adapter.`in`.web.model.ProductRegisterRequest
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductRegisterResponse
 import org.ekgns33.springmarket.product.service.port.`in`.ProductQueryUsecase
 import org.ekgns33.springmarket.product.service.port.`in`.ProductRegisterUsecase
 import org.ekgns33.springmarket.product.service.port.`in`.model.ProductRegisterCommand

@@ -1,7 +1,9 @@
-package org.ekgns33.springmarket.product.domain
+package org.ekgns33.springmarket.product.persistence
 
 import jakarta.persistence.*
 import org.ekgns33.springmarket.common.BaseEntity
+import org.ekgns33.springmarket.product.domain.Product
+import org.ekgns33.springmarket.product.domain.ProductStatus
 import java.util.*
 
 @Entity
@@ -14,8 +16,14 @@ class ProductEntity(
     @Enumerated(EnumType.STRING)
     var status: ProductStatus,
 
-    @Column(name = "amount")
+    @Column(name = "total_quantity")
     var quantity: Int,
+
+    @Column(name = "reserved_quantity")
+    var reserved: Int,
+
+    @Column(name = "sold_quantity")
+    var sold: Int,
 
     @Column(name = "price")
     var price: Int,
@@ -29,6 +37,8 @@ class ProductEntity(
         sellerId = product.seller.id,
         status = product.status,
         quantity = product.quantity,
+        reserved = product.reserved,
+        sold = product.sold,
         price = product.price.value,
         name = product.name
     ) {

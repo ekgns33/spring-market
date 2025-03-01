@@ -1,4 +1,4 @@
-package org.ekgns33.springmarket.product.adapter.`in`.model
+package org.ekgns33.springmarket.product.adapter.`in`.web.model
 
 
 data class ProductRegisterRequest(

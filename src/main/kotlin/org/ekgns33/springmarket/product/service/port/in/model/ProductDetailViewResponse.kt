@@ -1,4 +1,4 @@
-package org.ekgns33.springmarket.product.adapter.`in`.model
+package org.ekgns33.springmarket.product.service.port.`in`.model
 
 import org.ekgns33.springmarket.product.domain.Product
 
@@ -18,7 +18,7 @@ data class ProductDetailViewResponse(
         sellerName = product.seller.name,
         name = product.name,
         price = product.price.value,
-        quantity = product.quantity,
+        quantity = product.getLeftStock(),
         status = product.status.name
     )
 }
