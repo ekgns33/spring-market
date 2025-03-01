@@ -1,7 +1,7 @@
 package org.ekgns33.springmarket.product.service
 
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductDetailViewResponse
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductListViewResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductDetailViewResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductListViewResponse
 import org.ekgns33.springmarket.product.service.port.`in`.ProductQueryUsecase
 import org.ekgns33.springmarket.product.service.port.out.ProductLoadPort
 import org.ekgns33.springmarket.product.service.port.out.ProductViewPort

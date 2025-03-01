@@ -1,7 +1,9 @@
-package org.ekgns33.springmarket.product.domain
+package org.ekgns33.springmarket.product.persistence
 
 import jakarta.persistence.*
 import org.ekgns33.springmarket.common.BaseEntity
+import org.ekgns33.springmarket.product.domain.Product
+import org.ekgns33.springmarket.product.domain.ProductStatus
 import java.util.*
 
 @Entity
@@ -14,8 +16,14 @@ class ProductEntity(
     @Enumerated(EnumType.STRING)
     var status: ProductStatus,
 
-    @Column(name = "amount")
-    var amount: Int,
+    @Column(name = "total_quantity")
+    var quantity: Int,
+
+    @Column(name = "reserved_quantity")
+    var reserved: Int,
+
+    @Column(name = "sold_quantity")
+    var sold: Int,
 
     @Column(name = "price")
     var price: Int,
@@ -25,14 +33,28 @@ class ProductEntity(
 
     ) : BaseEntity() {
 
+    @Version
+    val version: Long? = null
+
     constructor(product: Product) : this(
         sellerId = product.seller.id,
         status = product.status,
-        amount = product.amount,
+        quantity = product.quantity,
+        reserved = product.reserved,
+        sold = product.sold,
         price = product.price.value,
         name = product.name
     ) {
         this.id = product.id
+    }
+
+    fun update(product: Product) {
+        this.name = product.name
+        this.quantity = product.quantity
+        this.reserved = product.reserved
+        this.sold = product.sold
+        this.status = product.status
+        this.sellerId = product.seller.id
     }
 
     override fun toString(): String {
@@ -50,5 +72,9 @@ class ProductEntity(
     override fun hashCode(): Int {
         if (id == null) return Objects.hash(name, price, status)
         return id.hashCode()
+    }
+
+    fun add() {
+        this.reserved++;
     }
 }

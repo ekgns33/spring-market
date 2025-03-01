@@ -1,4 +1,4 @@
-package org.ekgns33.springmarket.product.adapter.`in`.model
+package org.ekgns33.springmarket.product.service.port.`in`.model
 
 import org.ekgns33.springmarket.product.service.dtos.ProductView
 

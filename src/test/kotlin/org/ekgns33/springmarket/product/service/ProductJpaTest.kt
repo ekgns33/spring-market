@@ -1,9 +1,9 @@
 package org.ekgns33.springmarket.product.service
 
 import org.ekgns33.springmarket.common.Money
-import org.ekgns33.springmarket.product.adapter.out.ProductRepository
+import org.ekgns33.springmarket.product.persistence.ProductRepository
 import org.ekgns33.springmarket.product.domain.Product
-import org.ekgns33.springmarket.product.domain.ProductEntity
+import org.ekgns33.springmarket.product.persistence.ProductEntity
 import org.ekgns33.springmarket.product.domain.ProductStatus
 import org.ekgns33.springmarket.product.domain.Seller
 import org.junit.jupiter.api.DisplayName
@@ -40,7 +40,7 @@ class ProductJpaTest {
         assertNotNull(foundProduct)
         assertEquals("상품명1", foundProduct.name)
         assertEquals(1000, foundProduct.price)
-        assertEquals(10, foundProduct.amount)
+        assertEquals(10, foundProduct.quantity)
         assertNotNull(foundProduct.createdAt)
         assertNotNull(foundProduct.updatedAt)
         assertNull(foundProduct.deletedAt)
@@ -57,7 +57,7 @@ class ProductJpaTest {
                 name = "제품명 $i",
                 seller = Seller(1L, "판매자1"),
                 price = Money(1000 + i),
-                amount = i,
+                quantity = i,
                 status = ProductStatus.ON_SALE
             )
             productList.add(ProductEntity(product))
