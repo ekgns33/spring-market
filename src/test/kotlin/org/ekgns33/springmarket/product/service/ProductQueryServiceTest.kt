@@ -36,6 +36,8 @@ class ProductQueryServiceTest {
                     name = "상품 1",
                     price = 100000,
                     quantity = 100,
+                    reserved = 1,
+                    sold = 0,
                     status = ProductStatus.ON_SALE
                 ),
                 ProductView(
@@ -43,6 +45,8 @@ class ProductQueryServiceTest {
                     name = "상품 2",
                     price = 5000,
                     quantity = 0,
+                    reserved = 1,
+                    sold = 0,
                     status = ProductStatus.OUT_OF_STOCK
                 )
             )

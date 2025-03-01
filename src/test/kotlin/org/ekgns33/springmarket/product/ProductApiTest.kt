@@ -1,9 +1,9 @@
 package org.ekgns33.springmarket.product
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductDetailViewResponse
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductRegisterRequest
-import org.ekgns33.springmarket.product.adapter.`in`.model.ProductRegisterResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductDetailViewResponse
+import org.ekgns33.springmarket.product.adapter.`in`.web.model.ProductRegisterRequest
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductRegisterResponse
 import org.ekgns33.springmarket.product.service.port.`in`.ProductQueryUsecase
 import org.ekgns33.springmarket.product.service.port.`in`.ProductRegisterUsecase
 import org.junit.jupiter.api.DisplayName
@@ -73,6 +73,7 @@ class ProductApiTest {
 
         verify(productRegisterUsecase, times(1)).register(any())
     }
+
 
     @DisplayName("상품 조회 API 테스트")
     @Test
