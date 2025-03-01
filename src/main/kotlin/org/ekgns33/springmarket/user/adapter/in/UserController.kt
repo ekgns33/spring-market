@@ -2,8 +2,8 @@ package org.ekgns33.springmarket.user.adapter.`in`
 
 import org.ekgns33.springmarket.common.BaseResponse.Companion.success
 import org.ekgns33.springmarket.common.BaseResponse.SuccessResponse
-import org.ekgns33.springmarket.user.adapter.`in`.model.SignUpResponse
-import org.ekgns33.springmarket.user.adapter.`in`.model.SignupRequest
+import org.ekgns33.springmarket.user.adapter.`in`.web.model.SignUpResponse
+import org.ekgns33.springmarket.user.adapter.`in`.web.model.SignupRequest
 import org.ekgns33.springmarket.user.service.port.`in`.UserAuthUsecase
 import org.ekgns33.springmarket.user.service.port.`in`.model.UserSignupCommand
 import org.springframework.http.ResponseEntity

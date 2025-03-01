@@ -2,7 +2,7 @@ package org.ekgns33.springmarket.user.service
 
 import org.ekgns33.springmarket.auth.domain.UserAuthInfo
 import org.ekgns33.springmarket.auth.exceptions.InvalidUserInfoException
-import org.ekgns33.springmarket.user.adapter.`in`.model.SignUpResponse
+import org.ekgns33.springmarket.user.adapter.`in`.web.model.SignUpResponse
 import org.ekgns33.springmarket.user.domain.User
 import org.ekgns33.springmarket.user.service.port.`in`.UserAuthUsecase
 import org.ekgns33.springmarket.user.service.port.`in`.model.UserSignupCommand

@@ -1,4 +1,4 @@
-package org.ekgns33.springmarket.user.adapter.`in`.model
+package org.ekgns33.springmarket.user.adapter.`in`.web.model
 
 import org.ekgns33.springmarket.common.CustomValidation
 
