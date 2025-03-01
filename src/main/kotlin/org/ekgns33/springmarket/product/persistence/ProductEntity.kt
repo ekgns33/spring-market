@@ -33,6 +33,9 @@ class ProductEntity(
 
     ) : BaseEntity() {
 
+    @Version
+    val version: Long? = null
+
     constructor(product: Product) : this(
         sellerId = product.seller.id,
         status = product.status,
@@ -43,6 +46,15 @@ class ProductEntity(
         name = product.name
     ) {
         this.id = product.id
+    }
+
+    fun update(product: Product) {
+        this.name = product.name
+        this.quantity = product.quantity
+        this.reserved = product.reserved
+        this.sold = product.sold
+        this.status = product.status
+        this.sellerId = product.seller.id
     }
 
     override fun toString(): String {
@@ -60,5 +72,9 @@ class ProductEntity(
     override fun hashCode(): Int {
         if (id == null) return Objects.hash(name, price, status)
         return id.hashCode()
+    }
+
+    fun add() {
+        this.reserved++;
     }
 }

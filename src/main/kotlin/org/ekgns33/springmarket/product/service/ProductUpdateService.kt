@@ -1,5 +1,6 @@
 package org.ekgns33.springmarket.product.service
 
+import org.ekgns33.springmarket.product.aop.Retry
 import org.ekgns33.springmarket.product.service.port.`in`.ProductUpdateUsecase
 import org.ekgns33.springmarket.product.service.port.`in`.model.ProductStockUseCommand
 import org.ekgns33.springmarket.product.service.port.out.ProductLoadPort
@@ -12,9 +13,10 @@ class ProductUpdateService(
     private val productSavePort: ProductSavePort,
 ) : ProductUpdateUsecase{
 
+    @Retry
     override fun useStockForReservation(productStockUseCommand: ProductStockUseCommand) {
         val product = productLoadPort.loadProduct(productStockUseCommand.productId)
         product.makeReservation(productStockUseCommand.quantity)
-        productSavePort.save(product)
+        productSavePort.update(product)
     }
 }
