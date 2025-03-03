@@ -3,10 +3,13 @@ package org.ekgns33.springmarket.product.aop
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
+import org.springframework.core.Ordered.LOWEST_PRECEDENCE
+import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
 
 @Aspect
 @Component
+@Order(LOWEST_PRECEDENCE-1)
 class RetryAspect {
 
     @Around("@annotation(retryAnnotation)")
