@@ -50,6 +50,8 @@ class OrderEntity(
         status = order.status,
         confirmedAt = order.confirmedAt,
         requestedAt = order.requestedAt,
-    )
+    ) {
+        this.id = order.id
+    }
 
 }
