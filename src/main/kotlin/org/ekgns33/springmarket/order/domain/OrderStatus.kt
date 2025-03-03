@@ -5,5 +5,9 @@ enum class OrderStatus {
     CONFIRMED,
     CANCELLED,
     REJECTED,
-    COMPLETED,
+    COMPLETED;
+
+    fun isUpdatableStatus(): Boolean {
+        return this == REQUESTED || this == CONFIRMED
+    }
 }

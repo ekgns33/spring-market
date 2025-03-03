@@ -13,7 +13,7 @@
 
 ### 2. 상품 거래 확정하기 - 판매자
 
-- `POST : /api/v1/products/{orderId}/confirm`]
+- `PUT : /api/v1/products/{orderId}/confirm`]
 
 - *Constraints*
     - 회원인 판매자만 자신의 상품에 대해 거래확정을 할 수 있다.
