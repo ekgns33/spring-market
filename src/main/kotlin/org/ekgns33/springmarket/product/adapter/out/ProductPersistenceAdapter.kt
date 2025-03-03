@@ -15,7 +15,6 @@ import org.ekgns33.springmarket.product.service.port.out.ProductViewPort
 import org.springframework.dao.OptimisticLockingFailureException
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Component
-import org.springframework.transaction.annotation.Transactional
 
 @Component
 class ProductPersistenceAdapter(
@@ -23,7 +22,6 @@ class ProductPersistenceAdapter(
     private val productUserLoadPort: ProductUserLoadPort,
 ) : ProductSavePort, ProductLoadPort, ProductViewPort {
 
-    @Transactional(readOnly = true)
     override fun save(product: Product): Product {
         val productEntity = productRepository.save(ProductEntity(product))
         val seller = productUserLoadPort.loadSeller(product.seller.id)
@@ -31,7 +29,6 @@ class ProductPersistenceAdapter(
     }
 
     @Throws(OptimisticLockingFailureException::class)
-    @Transactional
     override fun update(product: Product) {
         val productEntity = productRepository.findById(product.id!!)
             .orElseThrow { ProductNotFoundException(ProductErrorCode.PRODUCT_NOT_FOUND) }
@@ -39,7 +36,6 @@ class ProductPersistenceAdapter(
         productRepository.save(productEntity)
     }
 
-    @Transactional(readOnly = true)
     override fun loadProduct(id: Long): Product {
         val productEntity = productRepository.findById(id)
             .orElseThrow { ProductNotFoundException(ProductErrorCode.PRODUCT_NOT_FOUND) }
