@@ -67,6 +67,19 @@ class ProductTest {
     }
 
     @Test
+    @DisplayName("예약 - 판매 후 남은 재고가 모두 예약되면 상태가 업데이트 된다.")
+    fun `남은 재고 예약 테스트`() {
+        val product = Product.withoutId(dummySeller, "테스트 상품", money, 5, ProductStatus.ON_SALE)
+        product.makeReservation(1)
+        product.confirmReservation(1)
+
+        product.makeReservation(4)
+
+        assertEquals(0, product.getLeftStock())
+        assertEquals(ProductStatus.RESERVED, product.status)
+    }
+
+    @Test
     @DisplayName("예약 취소 - 예약 취소 시 예약 수량이 감소되고 상태가 업데이트되어야 한다")
     fun `예약 취소 테스트`() {
         val product = Product.withoutId(dummySeller, "테스트 상품", money, 10, ProductStatus.ON_SALE)

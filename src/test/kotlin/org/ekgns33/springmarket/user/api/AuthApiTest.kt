@@ -26,8 +26,10 @@ class AuthApiTest {
 
     @MockitoBean
     lateinit var signinUsecase: SigninUsecase
+
     @Autowired
     lateinit var mockMvc: MockMvc
+
     @Autowired
     lateinit var objectMapper: ObjectMapper
 
@@ -51,7 +53,6 @@ class AuthApiTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andDo(MockMvcResultHandlers.print())
     }
-
 
 
 }

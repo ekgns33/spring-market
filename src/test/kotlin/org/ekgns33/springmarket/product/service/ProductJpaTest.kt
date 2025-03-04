@@ -1,11 +1,11 @@
 package org.ekgns33.springmarket.product.service
 
 import org.ekgns33.springmarket.common.Money
-import org.ekgns33.springmarket.product.persistence.ProductRepository
 import org.ekgns33.springmarket.product.domain.Product
-import org.ekgns33.springmarket.product.persistence.ProductEntity
 import org.ekgns33.springmarket.product.domain.ProductStatus
 import org.ekgns33.springmarket.product.domain.Seller
+import org.ekgns33.springmarket.product.persistence.ProductEntity
+import org.ekgns33.springmarket.product.persistence.ProductRepository
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
