@@ -10,11 +10,11 @@ data class OrderLine(
     val quantity: Int,
     val totalAmount: Money
 ) {
-    constructor(productInfo: ProductInfo, quantity: Int) : this(
+    constructor(productInfo: ProductInfo, orderedQuantity: Int) : this(
         productId = productInfo.id,
         price = productInfo.price,
-        quantity = productInfo.quantity,
-        totalAmount = productInfo.price.multiply(quantity)
+        quantity = orderedQuantity,
+        totalAmount = productInfo.price.multiply(orderedQuantity)
     )
 
     fun toOrderLineValue(): OrderLineValue {

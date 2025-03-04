@@ -14,6 +14,7 @@ import java.net.URI
 class OrderController(
     private val orderCreateUsecase: OrderCreateUsecase,
     private val orderConfirmUsecase: OrderConfirmUsecase,
+    private val orderCancelUsecase: OrderCancelUsecase
 ) {
 
     @PostMapping
@@ -43,5 +44,20 @@ class OrderController(
             )
         )
         return ResponseEntity.ok(success(response, "success"))
+    }
+
+    @PutMapping("/{orderId}/cancel")
+    fun cancelOrder(
+        @PathVariable orderId: Long,
+        @UserId userId: Long
+    )
+            : ResponseEntity<SuccessResponse<OrderCancelResponse>> {
+        val response = orderCancelUsecase.cancel(
+            OrderCancelCommand(
+                orderId = orderId,
+                userId = userId
+            )
+        )
+        return ResponseEntity.ok().body(success(response, "success"))
     }
 }

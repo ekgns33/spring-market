@@ -17,6 +17,33 @@ class Order(
         }
     }
 
+    fun cancel(canceledBy: Long) {
+        validateCancelable()
+        validateCancellationPermission(canceledBy)
+        updateStatus(OrderStatus.CANCELLED)
+    }
+
+    private fun validateCancelable() {
+        check(this.status.isCancelable()) { "Order status $this is not cancelable" }
+    }
+
+    private fun updateStatus(status: OrderStatus) {
+        this.status = status
+    }
+
+    private fun isBuyer(canceledBy: Long): Boolean {
+        return buyerId == canceledBy
+    }
+
+    private fun isSeller(canceledBy: Long): Boolean {
+        return sellerId == canceledBy
+    }
+
+    private fun validateCancellationPermission(userId: Long) {
+        check(isBuyer(userId) || isSeller(userId)) { IllegalStateException("Buyer ID $buyerId is not valid") }
+    }
+
+
     fun validateSeller(userId: Long) {
         check(this.sellerId == userId)
     }
