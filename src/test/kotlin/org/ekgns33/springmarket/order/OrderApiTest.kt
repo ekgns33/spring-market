@@ -1,6 +1,7 @@
 package org.ekgns33.springmarket.order
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.ekgns33.springmarket.order.adapter.`in`.OrderCancelResponse
 import org.ekgns33.springmarket.order.adapter.`in`.model.OrderCreateRequest
 import org.ekgns33.springmarket.order.service.port.`in`.*
 import org.junit.jupiter.api.DisplayName
@@ -34,6 +35,9 @@ class OrderApiTest {
     @MockitoBean
     private lateinit var orderConfirmUsecase: OrderConfirmUsecase
 
+
+    @MockitoBean
+    private lateinit var orderCancelUsecase: OrderCancelUsecase
 
     @DisplayName("주문 생성 API 테스트 - 성공")
     @Test
@@ -74,5 +78,24 @@ class OrderApiTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.data.orderId").value(1L))
 
+    }
+
+    @DisplayName("주문 취소 API 테스트 - 성공")
+    @Test
+    @WithMockUser(username = "1", roles = ["USER"])
+    fun `주문 취소`() {
+        val orderId = 1L;
+        whenever(orderCancelUsecase.cancel(any()))
+            .thenReturn(OrderCancelResponse(orderId))
+
+        val resultActions = mockMvc.perform(
+            put("/api/v1/orders/$orderId/cancel")
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+
+        resultActions
+            .andExpect(status().isOk)
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.data.orderId").value(1L))
     }
 }

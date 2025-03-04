@@ -7,6 +7,10 @@ enum class OrderStatus {
     REJECTED,
     COMPLETED;
 
+    fun isCancelable(): Boolean {
+        return this == REQUESTED
+    }
+
     fun isUpdatableStatus(): Boolean {
         return this == REQUESTED || this == CONFIRMED
     }

@@ -6,8 +6,8 @@ import org.ekgns33.springmarket.user.adapter.`in`.web.model.SignupRequest
 import org.ekgns33.springmarket.user.service.port.`in`.UserAuthUsecase
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.given
 import org.mockito.kotlin.any
+import org.mockito.kotlin.given
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -25,8 +25,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 class UserApiTest {
     @MockitoBean
     lateinit var userAuthUsecase: UserAuthUsecase
+
     @Autowired
     lateinit var mockMvc: MockMvc
+
     @Autowired
     lateinit var objectMapper: ObjectMapper
 

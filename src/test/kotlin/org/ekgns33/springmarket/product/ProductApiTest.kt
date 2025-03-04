@@ -1,11 +1,11 @@
 package org.ekgns33.springmarket.product
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.ekgns33.springmarket.product.service.port.`in`.model.ProductDetailViewResponse
 import org.ekgns33.springmarket.product.adapter.`in`.web.model.ProductRegisterRequest
-import org.ekgns33.springmarket.product.service.port.`in`.model.ProductRegisterResponse
 import org.ekgns33.springmarket.product.service.port.`in`.ProductQueryUsecase
 import org.ekgns33.springmarket.product.service.port.`in`.ProductRegisterUsecase
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductDetailViewResponse
+import org.ekgns33.springmarket.product.service.port.`in`.model.ProductRegisterResponse
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any
@@ -78,7 +78,7 @@ class ProductApiTest {
     @DisplayName("상품 조회 API 테스트")
     @Test
     fun 상품_조회() {
-        val productId: Long = 1;
+        val productId: Long = 1
 
         val expectedResponse = ProductDetailViewResponse(
             id = productId,

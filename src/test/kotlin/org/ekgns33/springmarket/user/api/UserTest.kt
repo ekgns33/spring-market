@@ -1,13 +1,13 @@
 package org.ekgns33.springmarket.user.api
 
+import org.ekgns33.springmarket.user.domain.User
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 import kotlin.test.assertFails
-import org.ekgns33.springmarket.user.domain.User
 
 @DisplayName("사용자 도메인 테스트")
-class UserTest{
+class UserTest {
 
     @ParameterizedTest()
     @CsvSource(
