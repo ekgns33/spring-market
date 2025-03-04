@@ -69,7 +69,7 @@ class Product(
     }
 
     private fun allReserved(): Boolean {
-        return quantity == reserved
+        return getLeftStock() == 0 &&  sold != quantity
     }
 
     private fun isProductLeft() : Boolean {
